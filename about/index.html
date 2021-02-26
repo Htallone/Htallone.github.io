@@ -15,18 +15,19 @@
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Cursive:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"htallone.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"htallone.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="关于我么么么么么么么么 为什么写博客why why why 博客内容学习笔记 读书笔记 有趣的事 家乡记忆、记录，美的或者… policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions哈哈哈哈">
+  <meta name="description" content="关于我么么么么么么么么为什么写博客why why why博客内容学习笔记读书笔记有趣的事家乡记忆、记录，美的或者...policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions哈哈哈哈">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://htallone.github.io/about/index.html">
 <meta property="og:site_name" content="Hello To Life">
-<meta property="og:description" content="关于我么么么么么么么么 为什么写博客why why why 博客内容学习笔记 读书笔记 有趣的事 家乡记忆、记录，美的或者… policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions哈哈哈哈">
+<meta property="og:description" content="关于我么么么么么么么么为什么写博客why why why博客内容学习笔记读书笔记有趣的事家乡记忆、记录，美的或者...policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions哈哈哈哈">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-05T07:58:59.000Z">
 <meta property="article:modified_time" content="2020-12-05T08:02:38.814Z">
@@ -222,6 +223,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -256,11 +258,38 @@ mjx-container[display="true"] + br {
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -270,6 +299,7 @@ mjx-container[display="true"] + br {
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -302,14 +332,7 @@ mjx-container[display="true"] + br {
       
       
       <div class="post-body">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>么么么么么么么么</p>
-<h1 id="为什么写博客"><a href="#为什么写博客" class="headerlink" title="为什么写博客"></a>为什么写博客</h1><p>why why why</p>
-<h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>学习笔记</p>
-<p>读书笔记</p>
-<p>有趣的事</p>
-<p>家乡记忆、记录，美的或者…</p>
-<h1 id="policies-disclaimers-terms-conditions"><a href="#policies-disclaimers-terms-conditions" class="headerlink" title="policies/disclaimers/terms/conditions"></a>policies/disclaimers/terms/conditions</h1><p>哈哈哈哈</p>
-
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><div class="fnScope" scope="1"><h1 id="关于我">关于我</h1><p>么么么么么么么么</p><h1 id="为什么写博客">为什么写博客</h1><p>why why why</p><h1 id="博客内容">博客内容</h1><p>学习笔记</p><p>读书笔记</p><p>有趣的事</p><p>家乡记忆、记录，美的或者...</p><h1 id="policiesdisclaimerstermsconditions">policies/disclaimers/terms/conditions</h1><p>哈哈哈哈</p></div>
       </div>
       
       
@@ -324,6 +347,7 @@ mjx-container[display="true"] + br {
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -370,7 +394,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91"><span class="nav-number">1.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">为什么写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">博客内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policies-disclaimers-terms-conditions"><span class="nav-number">4.</span> <span class="nav-text">policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91"><span class="nav-number">1.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">为什么写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">博客内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policiesdisclaimerstermsconditions"><span class="nav-number">4.</span> <span class="nav-text">policies&#x2F;disclaimers&#x2F;terms&#x2F;conditions</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -386,24 +410,32 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Htallone" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Htallone" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:HeTailong@buaa.edu.cn" title="E-Mail → mailto:HeTailong@buaa.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
 
 
 
@@ -425,8 +457,8 @@ mjx-container[display="true"] + br {
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -450,6 +482,9 @@ mjx-container[display="true"] + br {
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -471,6 +506,8 @@ mjx-container[display="true"] + br {
 
 
 
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -478,6 +515,28 @@ mjx-container[display="true"] + br {
 
 
 
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
@@ -485,6 +544,37 @@ mjx-container[display="true"] + br {
   
 
   
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'HKE3J61xSjAtAkN7v8JVSo1G-gzGzoHsz',
+      appKey     : 'BtnUTkmm2W0chvyd6JT4ijsf',
+      placeholder: "上网不涉密，涉密不上网。\n保守国家秘密，维护世界和平。\nNo Spy, Uphold World Peace.",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
